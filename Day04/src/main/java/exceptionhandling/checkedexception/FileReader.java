@@ -1,0 +1,21 @@
+package exceptionhandling.checkedexception;
+
+import java.io.*;
+
+public class FileReader {
+    public static String fileReader(String fileName) {
+        String str = "";
+        try (BufferedReader reader = new BufferedReader(new java.io.FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                 str = line;
+            }
+        } catch (FileNotFoundException e ) {
+            System.out.println("File not Found: " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the file.");
+        }
+
+        return str;
+    }
+}
